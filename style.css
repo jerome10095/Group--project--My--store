@@ -75,15 +75,17 @@ button {
     border-radius: 300px;
     align-items: center;
     justify-content: center;
-    padding: auto   ;
+    padding: auto;
+    transition: background-color 0.3s ease;
+    border: none;
 
 }
 
-p {
-    color:rgb(52, 240, 240);
-    text-align: center;
-    font-size: 2pc;
-    margin: auto;
+.products-container p {
+    color: rgb(162, 197, 122);
+    font-size: 22px;
+    font-weight: bold;
+    margin-bottom: 15px;
     
 }
 
@@ -93,6 +95,8 @@ h2 {
     display: inline;
     font-size: 20px;
     justify-content: center;
+    font-size: 22px;
+    margin: 15px 0 10px;
 
 }
 
