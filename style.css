@@ -8,6 +8,14 @@
     box-sizing: border-box;
 }
 
+body {
+    margin: 0;
+    padding: 0;
+    background-color: rgb(228, 230, 139);
+}
+
+
+
 #nav {
     display: inline;
     display: flex;
@@ -29,11 +37,12 @@ h1 {
 }
 
 .products-container {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 50px;
-    width: 100%;
-    max-width: 70p%;
+     display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+    padding: 40px;
+    max-width: 85%;
+
     margin: auto;
     padding: 20px;
     background-color: white;
@@ -52,12 +61,13 @@ button {
 
     color: white;
     background-color: rgb(19, 177, 19);
-    height: 40px;
-    width: 100px;
+    height: 30px;
+    width: 70px;
     text-align: center;
     border-radius: 300px;
     align-items: center;
     justify-content: center;
+    padding: auto   ;
 
 }
 
@@ -80,16 +90,20 @@ h2 {
 
 
 
-.product1, .product2, .product3, .product4, .product5, .product6 {
+card-container section {
 
-    height: 100%;
-    width: 300px;
-    margin: 0px;
-    padding: 10px;   
-    border: 1px solid #ccc;
-    box-shadow: 3px 3px 5px 6px #ccc;
+    background-color: white;
+    border-radius: 10px;
+    padding: 15px;
+    text-align: center;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease;
 }
 
+card-container section:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+}
 
 
 #footer {
