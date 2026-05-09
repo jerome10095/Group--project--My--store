@@ -52,6 +52,7 @@ h1 {
     background-color: rgb(255, 255, 255);
     overflow: hidden;
     border-radius: 10px;
+    
 
 }
 
@@ -69,13 +70,11 @@ button {
 
     color: white;
     background-color: rgb(19, 177, 19);
-    height: 30px;
-    width: 70px;
-    text-align: center;
-    border-radius: 300px;
-    align-items: center;
-    justify-content: center;
-    padding: auto;
+    border: none;
+    padding: 12px 20px;
+    border-radius: 30px;
+    cursor: pointer;
+    font-size: 16px;
     transition: background-color 0.3s ease;
     border: none;
 
@@ -112,6 +111,7 @@ card-container section {
     transition: transform 0.3s ease;
     border: 1px solid rgb(30, 30, 31);
     margin: 40px;
+    
 }
 
 card-container section:hover {
@@ -129,4 +129,15 @@ card-container section:hover {
     margin: 0px;
 
     
+}
+
+.product12 {
+    background-color: rgb(255, 255, 255);
+    border-radius: 10px;
+    padding: 15px;
+    text-align: center;
+    box-shadow: 2px 4px 10px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease;
+    border: 1px solid rgb(248, 248, 252);
+    margin: 40px;
 }
