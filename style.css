@@ -35,8 +35,8 @@ h1 {
     width: 100%;
     max-width: 70p%;
     margin: auto;
-    padding: 10px;
-    margin: 10px;
+    padding: 20px;
+    background-color: white;
 
 }
 
@@ -88,4 +88,16 @@ h2 {
     padding: 10px;   
     border: 1px solid #ccc;
     box-shadow: 3px 3px 5px 6px #ccc;
+}
+
+
+
+#footer {
+    background-color: rgb(30, 30, 31);
+    color: white;
+    text-align: center;
+    padding: 20px;
+    font-size: 20px;
+
+    
 }
