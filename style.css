@@ -52,6 +52,9 @@ h1 {
     background-color: rgb(255, 255, 255);
     overflow: hidden;
     border-radius: 10px;
+    padding-top: 50px;
+    margin-top: 10px;
+    overflow: absolute;
     
 
 }
@@ -114,11 +117,6 @@ card-container section {
     
 }
 
-card-container section:hover {
-    transform: translateY(-5px);
-    box-shadow: 2px 8px 20px rgba(0,0,0,0.2);
-}
-
 
 #footer {
     background-color: rgb(30, 30, 31);
@@ -140,4 +138,9 @@ card-container section:hover {
     transition: transform 0.3s ease;
     border: 1px solid rgb(248, 248, 252);
     margin: 10px;
+}
+
+.section:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0,0,0,0.2);
 }
