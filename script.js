@@ -30,17 +30,16 @@ const closeBtn = document.getElementById("closeBtn");
 const slideNav = document.getElementById("slideNav");
 const overlay = document.getElementById("overlay");
 
-hamburgerBtn.addEventListener("click", function () {
+const openNav = () => {
     slideNav.classList.add("open");
     overlay.classList.add("show");
-});
+};
 
-closeBtn.addEventListener("click", function () {
+const closeNav = () => {
     slideNav.classList.remove("open");
     overlay.classList.remove("show");
-});
+};
 
-overlay.addEventListener("click", function () {
-    slideNav.classList.remove("open");
-    overlay.classList.remove("show");
-});
+hamburgerBtn.addEventListener("click", openNav);
+closeBtn.addEventListener("click", closeNav);
+overlay.addEventListener("click", closeNav);

@@ -14,15 +14,32 @@
         <input type="text" id="searchInput" placeholder="Search products...">
     </div>
     <h1 id="title">Our Online Store</h1>
-    <button class="hamburger" id="hamburger" aria-lablel="open menu"> &#9776;</button>
-    <div class="slide-nav" id="slideNav">
-    <ul class="slide-nav-links">
-        <li>Home</li>
-        <li>New Arrival</li>
-        <li>Best Sellers</li>
-        <li>Contact</li>
-    </ul>
+<button class="hamburger" id="hamburgerBtn" aria-label="Open menu">&#9776;</button>
+
+<div class="slide-nav" id="slideNav">
+  <div class="slide-nav-header">
+    <span>🛒 Our Store</span>
+    <button class="close-btn" id="closeBtn">&times;</button>
+  </div>
+
+  <ul class="slide-nav-links">
+    <li class="nav-item active">🏠 <span>Home</span></li>
+    <li class="nav-item">🆕 <span>New Arrival</span></li>
+  </ul>
+
+  <div class="nav-section-label">Shop</div>
+  <ul class="slide-nav-links">
+    <li class="nav-item">🏆 <span>Best Sellers</span></li>
+    <li class="nav-item">🔥 <span>Deals</span></li>
+  </ul>
+
+  <div class="nav-section-label">Other</div>
+  <ul class="slide-nav-links">
+    <li class="nav-item">📞 <span>Contact</span></li>
+    <li class="nav-item">ℹ️ <span>About Us</span></li>
+  </ul>
 </div>
+
 <div class="overlay" id="overlay"></div>
 </section>
 
