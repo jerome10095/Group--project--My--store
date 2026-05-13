@@ -1,21 +1,33 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>online store</title>
-    <link rel="stylesheet" type="text/css" href="style.css">
-    <link rel="script" type="text/javascript" href="script.js">
-    <script src="script.js"></script>
+  <title>Our Online Store</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js"></script>
 </head>
 <body>
-<div class="container">
-   <section class="header">
-    <div class="search-box">
-        <span class="icon">🔍</span>
-        <input type="text" id="searchInput" placeholder="Search products...">
-    </div>
-    <h1 id="title">Our Online Store</h1>
-<button class="hamburger" id="hamburgerBtn" aria-label="Open menu">&#9776;</button>
 
+<!-- ══════════════ HEADER ══════════════ -->
+<header class="header">
+  <div class="search-box">
+    <span class="icon">🔍</span>
+    <input type="text" id="searchInput" placeholder="Search products...">
+  </div>
+
+  <h1 id="title">Our Online Store</h1>
+
+  <!-- Top nav -->
+  <nav class="top-nav">
+    <span class="top-nav-link" data-section="all">Home</span>
+    <span class="top-nav-link" data-section="new">New Arrival</span>
+    <span class="top-nav-link" data-section="best">Best Sellers</span>
+    <span class="top-nav-link" data-section="contact">Contact</span>
+  </nav>
+
+  <button class="hamburger" id="hamburgerBtn" aria-label="Open menu">&#9776;</button>
+</header>
+
+<!-- ══════════════ SIDEBAR ══════════════ -->
 <div class="slide-nav" id="slideNav">
   <div class="slide-nav-header">
     <span>🛒 Our Store</span>
@@ -23,139 +35,77 @@
   </div>
 
   <ul class="slide-nav-links">
-    <li class="nav-item active">🏠 <span>Home</span></li>
-    <li class="nav-item">🆕 <span>New Arrival</span></li>
+    <li class="nav-item active" data-section="all">🏠 <span>Home</span></li>
+    <li class="nav-item" data-section="new">🆕 <span>New Arrival</span></li>
   </ul>
 
   <div class="nav-section-label">Shop</div>
   <ul class="slide-nav-links">
-    <li class="nav-item">🏆 <span>Best Sellers</span></li>
-    <li class="nav-item">🔥 <span>Deals</span></li>
+    <li class="nav-item" data-section="best">🏆 <span>Best Sellers</span></li>
+  </ul>
+
+  <div class="nav-section-label">Categories</div>
+  <ul class="slide-nav-links">
+    <li class="nav-item cat-tab active" data-section="all" data-cat="all">🗂️ <span>All</span></li>
+    <li class="nav-item cat-tab" data-cat="keychains">🔑 <span>Keychains</span></li>
+    <li class="nav-item cat-tab" data-cat="clothing">👗 <span>Clothing</span></li>
+    <li class="nav-item cat-tab" data-cat="wall-art">🖼️ <span>Wall Art</span></li>
+    <li class="nav-item cat-tab" data-cat="decor">🏡 <span>Decor</span></li>
   </ul>
 
   <div class="nav-section-label">Other</div>
   <ul class="slide-nav-links">
-    <li class="nav-item">📞 <span>Contact</span></li>
-    <li class="nav-item">ℹ️ <span>About Us</span></li>
+    <li class="nav-item" data-section="contact">📞 <span>Contact</span></li>
   </ul>
 </div>
-
 <div class="overlay" id="overlay"></div>
+
+<!-- ══════════════ CATEGORY FILTER BAR ══════════════ -->
+<div class="cat-bar">
+  <button class="cat-tab active" data-cat="all">All</button>
+  <button class="cat-tab" data-cat="keychains">🔑 Keychains</button>
+  <button class="cat-tab" data-cat="clothing">👗 Clothing</button>
+  <button class="cat-tab" data-cat="wall-art">🖼️ Wall Art</button>
+  <button class="cat-tab" data-cat="decor">🏡 Decor</button>
+</div>
+
+<!-- ══════════════ PAGE SECTIONS ══════════════ -->
+
+<!-- HOME / ALL PRODUCTS -->
+<section class="page-section active-section" id="section-all">
+  <h2 class="section-heading" id="section-title">All Products</h2>
+  <div class="products-container" id="all-products"></div>
 </section>
 
-    <div class="products-container">
-        <section class="product">
-            <img src="Image/Adorable and Easy 26 Crochet Keychain Ideas You’ll….jfif" alt="product1-image" class="product1-image" name="product">
-            <h2>Product 1</h2>
-            <p>$8.99</p>
-            <button class="cart1">Add to Cart</button>
-        </section>
-        <section class="product">
-            <img src="Image/Terzi mankenimiz olmayınca biz de birtakım ai….jfif" alt="product2-image" class="product2-image" name="product">
-            <h2>Product 2</h2>
-            <p>$12.99</p>
-            <button class="cart2">Add to Cart</button>
-            
-        </section>
-        <section class="product">
-            <img src="Image/Instagram.jfif" alt="product3-image" class="product3-image" name="product">
-            <h2>Product 3</h2>
-            <p>$15.99</p>
-            <button class="cart3">Add to Cart</button>
-        </section>
-        <section class="product">
-            <img src="Image/download (5).jfif" alt="product4-image" class="product4-image" name="product">
-            <h2>Product 4</h2>
-            <p>$18.99</p>
-            <button class="cart4">Add to Cart</button>
-        </section>
-        <section class="product">
-            <img src="Image/My friends grandpa has one and I love it!! It's….jfif" alt="product4-image" class="product5-image" name="product">
-            <h2>Product 5</h2>
-            <p>$7.57</p>
-             <button class="cart5">Add to Cart</button>
-        </section>
-        <section class="product">
-            <img src="Image/Save this crochet keychain camera if you want to….jfif" alt="product4-image" class="product6-image" name="product">
-            <h2>Product 6</h2>
-            <p>$11.57</p>
-            <button class="cart6">Add to Cart</button>
-        </section>
-        <section class="product">
-            <img src="Image/Wood - Wood Art _ Facebook.jfif" alt="product4-image" class="product7-image" name="product">
-            <h2>Product 7</h2>
-            <p>$21.7</p>
-            <button class="cart7">Add to Cart</button>
-        </section>
-        <section class="product">
-            <img src="Image/барельеф.jfif" alt="product4-image" class="product8-image" name="product">
-            <h2>Product 8</h2>
-            <p>$26.34</p>
-            <button class="cart8">Add to Cart</button>
-        </section>
-        <section class="product">
-            <img src="Image/Instagram (1).jfif" alt="product4-image" class="product9-image" name="product">
-            <h2>Product 9</h2>
-            <p>$15.99</p>
-            <button class="cart9">Add to Cart</button>
-        </section>
-        <section class="product">
-            <img src="Image/Elevate your home with this stunning minimalist….jfif" alt="product4-image" class="product10-image" name="product">
-            <h2>Product 10</h2>
-            <p>$19.99</p>
-            <button class="cart10">Add to Cart</button>
-        </section>
-        <section class="product">
-            <img src="Image/Claim a free version now_ Go to our website_.jfif" alt="product4-image" class="product11-image" name="product">
-            <h2>Product 11</h2>
-            <p>$9.99</p>
-            <button class="cart11">Add to Cart</button>
-        </section>
-        <section class="product">
-            <img src="Image/download (4).jfif" alt="product4-image" class="product12-image" name="product">
-            <h2>Product 12</h2>
-            <p>$14.99</p>
-            <button class="cart12">Add to Cart</button>
-        </section>
-        <section class="product">
-            <img src="Image/Crafted from the finest, rarest wood, this round….jfif" alt="product4-image" class="product13-image" name="product">
-            <h2>Product 13</h2>
-            <p>$17.99</p>
-            <button class="cart13">Add to Cart</button>
-        </section>
-        <section class="product">
-            <img src="Image/download (3).jfif" alt="product4-image" class="product14-image" name="product">
-            <h2>Product 14</h2>
-            <p>$22.99</p>
-            <button class="cart14">Add to Cart</button>
-        </section>
-        <section class="product">
-            <img src="Image/download (2).jfif" alt="product4-image" class="product15-image" name="product">
-            <h2>Product 15</h2>
-            <p>$29.99</p>
-            <button class="cart15">Add to Cart</button>
-        </section>
-        <section class="product">
-            <img src="Image/Living in a city often means dealing with limited….jfif" alt="product4-image" class="product16-image" name="product">
-            <h2>Product 16</h2>
-            <p>$34.99</p>
-            <button class="cart16">Add to Cart</button>
-        </section>
-        <section class="product">
-            <img src="Image/Upgrade your home with this modern LED wall decor….jfif" alt="product4-image" class="product17-image" name="product">
-            <h2>Product 17</h2>
-            <p>$39.99</p>
-            <button class="cart17">Add to Cart</button>
-        </section>
-    </div>
-</body>
-<br>
-<br>
+<!-- NEW ARRIVALS -->
+<section class="page-section" id="section-new">
+  <h2 class="section-heading">🆕 New Arrivals</h2>
+  <p class="section-sub">The latest additions to our store</p>
+  <div class="products-container" id="new-arrivals"></div>
+</section>
 
+<!-- BEST SELLERS -->
+<section class="page-section" id="section-best">
+  <h2 class="section-heading">🏆 Best Sellers</h2>
+  <p class="section-sub">Our most loved products</p>
+  <div class="products-container" id="best-sellers"></div>
+</section>
+
+<!-- CONTACT -->
+<section class="page-section" id="section-contact">
+  <div class="contact-card">
+    <h2>📞 Contact Us</h2>
+    <p>We'd love to hear from you!</p>
+    <a href="mailto:jeromecyiza@gmail.com" class="contact-email">jeromecyiza@gmail.com</a>
+    <p class="contact-note">We usually reply within 24 hours.</p>
+  </div>
+</section>
+
+<!-- ══════════════ FOOTER ══════════════ -->
 <footer id="footer" class="footer">
-    <h3>Copyright 2024</h3>
-    <contact>
-        <h3>Contact us: <a href="mailto:jeromecyiza@gmail.com">jeromecyiza@gmail.com</a></h3>
-    </contact>
+  <p>Copyright 2024 &mdash; Our Online Store</p>
+  <p>Contact: <a href="mailto:jeromecyiza@gmail.com">jeromecyiza@gmail.com</a></p>
 </footer>
+
+</body>
 </html>
