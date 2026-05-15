@@ -1,47 +1,74 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>Our Online Store</title>
+  <meta charset="UTF-8">
+  <title>Ireme Creations</title>
   <link rel="stylesheet" href="style.css">
-  <script src="script.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/gsap.min.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+
+  <!-- GSAP + plugins -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/TextPlugin.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/CustomEase.min.js"></script>
 </head>
 <body>
 
+<!-- ── CURSOR GLOW ── -->
+<div id="cursorGlow"></div>
+<div id="cursorDot"></div>
+
 <!-- ══════════════ HEADER ══════════════ -->
-<header class="header">
+<header class="header" id="mainHeader">
   <div class="search-box">
     <span class="icon">🔍</span>
     <input type="text" id="searchInput" placeholder="Search products...">
   </div>
 
-  <h1 id="title">Our Online Store</h1>
+  <h1 id="title">Ireme Creations</h1>
 
   <nav class="top-nav">
-    <span class="top-nav-link">Home</span>
-    <span class="top-nav-link">New Arrival</span>
-    <span class="top-nav-link">Best Sellers</span>
-    <span class="top-nav-link">Contact</span>
+    <span class="top-nav-link magnetic">Home</span>
+    <span class="top-nav-link magnetic">New Arrival</span>
+    <span class="top-nav-link magnetic">Best Sellers</span>
+    <span class="top-nav-link magnetic">Contact</span>
   </nav>
 
-  <!-- Cart button -->
-  <button class="cart-btn" id="cartBtn">
+  <button class="cart-btn magnetic" id="cartBtn">
     🛒 Cart <span class="cart-count" id="cartCount">0</span>
   </button>
 
-  <!-- Login / Register -->
   <div class="auth-area">
     <span class="auth-icon">👤</span>
-    <span class="auth-link" id="authLink">Login | Register</span>
+    <span class="auth-link magnetic" id="authLink">Login | Register</span>
   </div>
 
-  <button class="hamburger" id="hamburgerBtn" aria-label="Open menu">&#9776;</button>
+  <button class="hamburger magnetic" id="hamburgerBtn" aria-label="Open menu">&#9776;</button>
 </header>
+
+<!-- ══════════════ HERO BANNER ══════════════ -->
+<section class="hero" id="hero">
+  <div class="hero-bg-particles" id="heroBg"></div>
+  <div class="hero-content">
+    <p class="hero-tag" id="heroTag">✨ New Collection Available</p>
+    <h2 class="hero-title" id="heroTitle">Ireme Creations</h2>
+    <p class="hero-sub" id="heroSub">Unique artisan products made just for you</p>
+    <button class="hero-btn magnetic" id="heroBtn">Shop Now →</button>
+  </div>
+  <div class="hero-floaters" id="heroFloaters"></div>
+
+  <!-- ── INTERACTIVE ANIMATION BOX ── -->
+  <div class="hero-anim-box" id="heroAnimBox">
+    <div class="anim-box-label">Our Crafts</div>
+    <canvas id="craftCanvas" width="260" height="200"></canvas>
+    <div class="anim-box-dots" id="animDots"></div>
+  </div>
+</section>
 
 <!-- ══════════════ SIDEBAR ══════════════ -->
 <div class="slide-nav" id="slideNav">
   <div class="slide-nav-header">
-    <span>🛒 Our Store</span>
+    <span>🛒 Ireme Creations</span>
     <button class="close-btn" id="closeBtn">&times;</button>
   </div>
   <ul class="slide-nav-links">
@@ -71,155 +98,147 @@
     <p class="cart-empty">Your cart is empty.</p>
   </div>
   <div class="cart-footer">
-    <div class="cart-total-row">
-      <span>Subtotal</span><span id="cartSubtotal">$0.00</span>
+    <div class="cart-total-row"><span>Subtotal</span><span id="cartSubtotal">$0.00</span></div>
+    <div class="cart-total-row"><span>Shipping</span><span id="cartShipping">$0.00</span></div>
+    <div class="cart-total-row total-bold"><span>Total</span><span id="cartTotal">$0.00</span></div>
+
+    <!-- Customer info fields -->
+    <div class="customer-info" id="customerInfo">
+      <p class="info-label">📋 Your details (for order confirmation)</p>
+      <input type="text" id="custName" placeholder="Your full name" class="cust-input">
+      <input type="tel" id="custPhone" placeholder="Your WhatsApp number" class="cust-input">
+      <input type="text" id="custAddress" placeholder="Delivery address" class="cust-input">
     </div>
-    <div class="cart-total-row">
-      <span>Shipping</span><span id="cartShipping">$0.00</span>
-    </div>
-    <div class="cart-total-row total-bold">
-      <span>Total</span><span id="cartTotal">$0.00</span>
-    </div>
-    <button class="order-btn" id="orderBtn">Place Order</button>
+
+    <button class="order-btn magnetic" id="orderBtn">Place Order via WhatsApp</button>
     <button class="clear-btn" id="clearCart">Clear Cart</button>
   </div>
 </div>
 <div class="cart-overlay" id="cartOverlay"></div>
 
-<!-- ══════════════ LOGIN / REGISTER MODAL ══════════════ -->
+<!-- ══════════════ AUTH MODAL ══════════════ -->
 <div class="modal-overlay" id="authModal">
-  <div class="modal">
+  <div class="modal" id="authModalBox">
     <button class="modal-close" id="closeAuth">&times;</button>
-
     <div class="modal-tabs">
       <button class="modal-tab active" id="tabLogin">Login</button>
       <button class="modal-tab" id="tabRegister">Register</button>
     </div>
-
-    <!-- Login form -->
     <div class="modal-form" id="loginForm">
       <h3>Welcome back!</h3>
       <input type="email" id="loginEmail" placeholder="Email address">
       <input type="password" id="loginPassword" placeholder="Password">
-      <button class="submit-btn" id="loginBtn">Login</button>
+      <button class="submit-btn magnetic" id="loginBtn">Login</button>
       <p class="modal-switch">No account? <span onclick="switchTab('register')">Register here</span></p>
     </div>
-
-    <!-- Register form -->
     <div class="modal-form hidden" id="registerForm">
       <h3>Create an account</h3>
       <input type="text" id="regName" placeholder="Full name">
       <input type="email" id="regEmail" placeholder="Email address">
       <input type="password" id="regPassword" placeholder="Password">
-      <button class="submit-btn" id="registerBtn">Create Account</button>
+      <button class="submit-btn magnetic" id="registerBtn">Create Account</button>
       <p class="modal-switch">Already have an account? <span onclick="switchTab('login')">Login here</span></p>
     </div>
   </div>
 </div>
 
-<!-- ══════════════ ORDER SUCCESS MODAL ══════════════ -->
+<!-- ══════════════ ORDER MODAL ══════════════ -->
 <div class="modal-overlay" id="orderModal">
-  <div class="modal order-modal">
+  <div class="modal order-modal" id="orderModalBox">
     <div class="order-success-icon">✅</div>
-    <h3>Order Placed!</h3>
+    <h3>Order Sent!</h3>
     <p id="orderSummaryText"></p>
-    <button class="submit-btn" id="closeOrder">Done</button>
+    <p class="order-whatsapp-note">📲 Your order details have been sent to our WhatsApp. We'll confirm shortly!</p>
+    <button class="submit-btn magnetic" id="closeOrder">Done</button>
   </div>
 </div>
 
+<!-- ══════════════ SECTION LABEL ══════════════ -->
+<div class="section-header-bar" id="sectionBar">
+  <h2 class="section-bar-title">🛍️ All Products</h2>
+  <div class="section-bar-line"></div>
+</div>
+
 <!-- ══════════════ PRODUCTS ══════════════ -->
-<div class="products-container">
+<div class="products-container" id="productsGrid">
   <section class="product" data-name="Product 1" data-price="8.99" data-img="Image/Adorable and Easy 26 Crochet Keychain Ideas You'll….jfif">
-    <img src="Image/Adorable and Easy 26 Crochet Keychain Ideas You'll….jfif" alt="Product 1">
-    <h2>Product 1</h2><p>$8.99</p>
-    <button class="add-to-cart">Add to Cart</button>
+    <div class="product-img-wrap"><img src="Image/instagram (2).jfif" alt="Product 1"><div class="img-overlay"><span class="overlay-icon">👁</span>Quick View</div></div>
+    <h2>Product 1</h2><p>$8.99</p><button class="add-to-cart magnetic">Add to Cart</button>
   </section>
   <section class="product" data-name="Product 2" data-price="12.99" data-img="Image/Terzi mankenimiz olmayınca biz de birtakım ai….jfif">
-    <img src="Image/Terzi mankenimiz olmayınca biz de birtakım ai….jfif" alt="Product 2">
-    <h2>Product 2</h2><p>$12.99</p>
-    <button class="add-to-cart">Add to Cart</button>
+    <div class="product-img-wrap"><img src="Image/Terzi mankenimiz olmayınca biz de birtakım ai….jfif" alt="Product 2"><div class="img-overlay"><span class="overlay-icon">👁</span>Quick View</div></div>
+    <h2>Product 2</h2><p>$12.99</p><button class="add-to-cart magnetic">Add to Cart</button>
   </section>
   <section class="product" data-name="Product 3" data-price="15.99" data-img="Image/Instagram.jfif">
-    <img src="Image/Instagram.jfif" alt="Product 3">
-    <h2>Product 3</h2><p>$15.99</p>
-    <button class="add-to-cart">Add to Cart</button>
+    <div class="product-img-wrap"><img src="Image/Instagram.jfif" alt="Product 3"><div class="img-overlay"><span class="overlay-icon">👁</span>Quick View</div></div>
+    <h2>Product 3</h2><p>$15.99</p><button class="add-to-cart magnetic">Add to Cart</button>
   </section>
   <section class="product" data-name="Product 4" data-price="18.99" data-img="Image/download (5).jfif">
-    <img src="Image/download (5).jfif" alt="Product 4">
-    <h2>Product 4</h2><p>$18.99</p>
-    <button class="add-to-cart">Add to Cart</button>
+    <div class="product-img-wrap"><img src="Image/download (5).jfif" alt="Product 4"><div class="img-overlay"><span class="overlay-icon">👁</span>Quick View</div></div>
+    <h2>Product 4</h2><p>$18.99</p><button class="add-to-cart magnetic">Add to Cart</button>
   </section>
   <section class="product" data-name="Product 5" data-price="7.57" data-img="Image/My friends grandpa has one and I love it!! It's….jfif">
-    <img src="Image/My friends grandpa has one and I love it!! It's….jfif" alt="Product 5">
-    <h2>Product 5</h2><p>$7.57</p>
-    <button class="add-to-cart">Add to Cart</button>
+    <div class="product-img-wrap"><img src="Image/My friends grandpa has one and I love it!! It's….jfif" alt="Product 5"><div class="img-overlay"><span class="overlay-icon">👁</span>Quick View</div></div>
+    <h2>Product 5</h2><p>$7.57</p><button class="add-to-cart magnetic">Add to Cart</button>
   </section>
   <section class="product" data-name="Product 6" data-price="11.57" data-img="Image/Save this crochet keychain camera if you want to….jfif">
-    <img src="Image/Save this crochet keychain camera if you want to….jfif" alt="Product 6">
-    <h2>Product 6</h2><p>$11.57</p>
-    <button class="add-to-cart">Add to Cart</button>
+    <div class="product-img-wrap"><img src="Image/Save this crochet keychain camera if you want to….jfif" alt="Product 6"><div class="img-overlay"><span class="overlay-icon">👁</span>Quick View</div></div>
+    <h2>Product 6</h2><p>$11.57</p><button class="add-to-cart magnetic">Add to Cart</button>
   </section>
   <section class="product" data-name="Product 7" data-price="21.70" data-img="Image/Wood - Wood Art _ Facebook.jfif">
-    <img src="Image/Wood - Wood Art _ Facebook.jfif" alt="Product 7">
-    <h2>Product 7</h2><p>$21.70</p>
-    <button class="add-to-cart">Add to Cart</button>
+    <div class="product-img-wrap"><img src="Image/Wood - Wood Art _ Facebook.jfif" alt="Product 7"><div class="img-overlay"><span class="overlay-icon">👁</span>Quick View</div></div>
+    <h2>Product 7</h2><p>$21.70</p><button class="add-to-cart magnetic">Add to Cart</button>
   </section>
   <section class="product" data-name="Product 8" data-price="26.34" data-img="Image/барельеф.jfif">
-    <img src="Image/барельеф.jfif" alt="Product 8">
-    <h2>Product 8</h2><p>$26.34</p>
-    <button class="add-to-cart">Add to Cart</button>
+    <div class="product-img-wrap"><img src="Image/барельеф.jfif" alt="Product 8"><div class="img-overlay"><span class="overlay-icon">👁</span>Quick View</div></div>
+    <h2>Product 8</h2><p>$26.34</p><button class="add-to-cart magnetic">Add to Cart</button>
   </section>
   <section class="product" data-name="Product 9" data-price="15.99" data-img="Image/Instagram (1).jfif">
-    <img src="Image/Instagram (1).jfif" alt="Product 9">
-    <h2>Product 9</h2><p>$15.99</p>
-    <button class="add-to-cart">Add to Cart</button>
+    <div class="product-img-wrap"><img src="Image/Instagram (1).jfif" alt="Product 9"><div class="img-overlay"><span class="overlay-icon">👁</span>Quick View</div></div>
+    <h2>Product 9</h2><p>$15.99</p><button class="add-to-cart magnetic">Add to Cart</button>
   </section>
   <section class="product" data-name="Product 10" data-price="19.99" data-img="Image/Elevate your home with this stunning minimalist….jfif">
-    <img src="Image/Elevate your home with this stunning minimalist….jfif" alt="Product 10">
-    <h2>Product 10</h2><p>$19.99</p>
-    <button class="add-to-cart">Add to Cart</button>
+    <div class="product-img-wrap"><img src="Image/Elevate your home with this stunning minimalist….jfif" alt="Product 10"><div class="img-overlay"><span class="overlay-icon">👁</span>Quick View</div></div>
+    <h2>Product 10</h2><p>$19.99</p><button class="add-to-cart magnetic">Add to Cart</button>
   </section>
   <section class="product" data-name="Product 11" data-price="9.99" data-img="Image/Claim a free version now_ Go to our website_.jfif">
-    <img src="Image/Claim a free version now_ Go to our website_.jfif" alt="Product 11">
-    <h2>Product 11</h2><p>$9.99</p>
-    <button class="add-to-cart">Add to Cart</button>
+    <div class="product-img-wrap"><img src="Image/Claim a free version now_ Go to our website_.jfif" alt="Product 11"><div class="img-overlay"><span class="overlay-icon">👁</span>Quick View</div></div>
+    <h2>Product 11</h2><p>$9.99</p><button class="add-to-cart magnetic">Add to Cart</button>
   </section>
   <section class="product" data-name="Product 12" data-price="14.99" data-img="Image/download (4).jfif">
-    <img src="Image/download (4).jfif" alt="Product 12">
-    <h2>Product 12</h2><p>$14.99</p>
-    <button class="add-to-cart">Add to Cart</button>
+    <div class="product-img-wrap"><img src="Image/download (4).jfif" alt="Product 12"><div class="img-overlay"><span class="overlay-icon">👁</span>Quick View</div></div>
+    <h2>Product 12</h2><p>$14.99</p><button class="add-to-cart magnetic">Add to Cart</button>
   </section>
   <section class="product" data-name="Product 13" data-price="17.99" data-img="Image/Crafted from the finest, rarest wood, this round….jfif">
-    <img src="Image/Crafted from the finest, rarest wood, this round….jfif" alt="Product 13">
-    <h2>Product 13</h2><p>$17.99</p>
-    <button class="add-to-cart">Add to Cart</button>
+    <div class="product-img-wrap"><img src="Image/Crafted from the finest, rarest wood, this round….jfif" alt="Product 13"><div class="img-overlay"><span class="overlay-icon">👁</span>Quick View</div></div>
+    <h2>Product 13</h2><p>$17.99</p><button class="add-to-cart magnetic">Add to Cart</button>
   </section>
   <section class="product" data-name="Product 14" data-price="22.99" data-img="Image/download (3).jfif">
-    <img src="Image/download (3).jfif" alt="Product 14">
-    <h2>Product 14</h2><p>$22.99</p>
-    <button class="add-to-cart">Add to Cart</button>
+    <div class="product-img-wrap"><img src="Image/download (3).jfif" alt="Product 14"><div class="img-overlay"><span class="overlay-icon">👁</span>Quick View</div></div>
+    <h2>Product 14</h2><p>$22.99</p><button class="add-to-cart magnetic">Add to Cart</button>
   </section>
   <section class="product" data-name="Product 15" data-price="29.99" data-img="Image/download (2).jfif">
-    <img src="Image/download (2).jfif" alt="Product 15">
-    <h2>Product 15</h2><p>$29.99</p>
-    <button class="add-to-cart">Add to Cart</button>
+    <div class="product-img-wrap"><img src="Image/download (2).jfif" alt="Product 15"><div class="img-overlay"><span class="overlay-icon">👁</span>Quick View</div></div>
+    <h2>Product 15</h2><p>$29.99</p><button class="add-to-cart magnetic">Add to Cart</button>
   </section>
   <section class="product" data-name="Product 16" data-price="34.99" data-img="Image/Living in a city often means dealing with limited….jfif">
-    <img src="Image/Living in a city often means dealing with limited….jfif" alt="Product 16">
-    <h2>Product 16</h2><p>$34.99</p>
-    <button class="add-to-cart">Add to Cart</button>
+    <div class="product-img-wrap"><img src="Image/Living in a city often means dealing with limited….jfif" alt="Product 16"><div class="img-overlay"><span class="overlay-icon">👁</span>Quick View</div></div>
+    <h2>Product 16</h2><p>$34.99</p><button class="add-to-cart magnetic">Add to Cart</button>
   </section>
   <section class="product" data-name="Product 17" data-price="39.99" data-img="Image/Upgrade your home with this modern LED wall decor….jfif">
-    <img src="Image/Upgrade your home with this modern LED wall decor….jfif" alt="Product 17">
-    <h2>Product 17</h2><p>$39.99</p>
-    <button class="add-to-cart">Add to Cart</button>
+    <div class="product-img-wrap"><img src="Image/Upgrade your home with this modern LED wall decor….jfif" alt="Product 17"><div class="img-overlay"><span class="overlay-icon">👁</span>Quick View</div></div>
+    <h2>Product 17</h2><p>$39.99</p><button class="add-to-cart magnetic">Add to Cart</button>
   </section>
 </div>
 
 <footer id="footer" class="footer">
-  <h3>Copyright 2024</h3>
-  <h3>Contact us: <a href="mailto:jeromecyiza@gmail.com">jeromecyiza@gmail.com</a></h3>
+  <div class="footer-inner">
+    <h3>Copyright 2024 &mdash; Ireme Creations</h3>
+    <h3>Contact us: <a href="mailto:jeromecyiza@gmail.com">jeromecyiza@gmail.com</a></h3>
+    <h3>WhatsApp: <a href="https://wa.me/250791720024" target="_blank">+250 791 720 024</a></h3>
+  </div>
 </footer>
 
+<script src="script.js"></script>
 </body>
 </html>
